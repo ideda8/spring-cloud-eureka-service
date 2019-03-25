@@ -1,0 +1,19 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: feign-consumer-hystrix
+
+
+
+
+#Feign是自带断路器的，如果在Dalston版本的Spring Cloud中，它没有默认打开。需要需要在配置文件中配置打开它,本项目我们是不需要打开的
+#feign:feign
+#  hystrix:
+#    enabled: true

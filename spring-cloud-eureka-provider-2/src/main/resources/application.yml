@@ -1,0 +1,40 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: eureka-provider
+  cloud:
+    config:
+      label: master
+      profile: dev
+#      uri: http://localhost:8888/
+      discovery:
+        enabled: true
+        serviceId: config-server-eureka
+  rabbitmq:
+    host: 192.168.31.217
+    prot: 5672
+    username: root
+    password: root
+
+#  spring.cloud.config.label 指明远程仓库的分支
+#  spring.cloud.config.profile
+#  dev开发环境配置文件
+#  test测试环境
+#  pro正式环境
+#  #spring.cloud.config.uri= http://localhost:8888/ 指明配置服务中心的网址（注释掉）
+#
+#  spring.cloud.config.discovery.enabled=true 是从配置中心读取文件。
+#  spring.cloud.config.discovery.serviceId=config-server 配置中心的servieId，服务名称，通过服务名称去 Eureka注册中心找服务
+
+
+#关闭刷新安全认证 值是false的话，除开health接口还依赖endpoints.health.sensitive的配置外，其他接口都不需要输入用户名和密码了
+management:
+  security:
+    enabled: false
